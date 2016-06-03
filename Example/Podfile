@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'FGPhotoBrowser_Example' do
+  pod 'FGPhotoBrowser', :path => '../'
+
+  target 'FGPhotoBrowser_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
