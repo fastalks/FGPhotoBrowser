@@ -1,0 +1,1 @@
+../../../../../FGPhotoBrowser/Classes/FGPhotoCollectionViewCell.h

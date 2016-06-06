@@ -1,0 +1,21 @@
+PODS:
+  - FGPhotoBrowser (0.1.0):
+    - SDWebImage (~> 3.7.0)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+
+DEPENDENCIES:
+  - FGPhotoBrowser (from `../`)
+
+EXTERNAL SOURCES:
+  FGPhotoBrowser:
+    :path: ../
+
+SPEC CHECKSUMS:
+  FGPhotoBrowser: c6cb02bfb804372cb8f01345125964042d8bd179
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+
+PODFILE CHECKSUM: b2ca727ff0b5595e71fabfea350c000bcf1dfa54
+
+COCOAPODS: 1.0.1

@@ -1,0 +1,1 @@
+../../../../../FGPhotoBrowser/Classes/FGPhotoBrowser.h

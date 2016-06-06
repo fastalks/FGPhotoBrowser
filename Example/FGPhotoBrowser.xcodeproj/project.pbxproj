@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50BAA65009F34B21603B8DA9 /* Pods_FGPhotoBrowser_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F61CF774230B40EFB07CCA2 /* Pods_FGPhotoBrowser_Tests.framework */; };
+		5ECC5F1E1D0134E7003BA279 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ECC5F1D1D0134E7003BA279 /* Default@2x.png */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -21,8 +21,9 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		694B0D921868A9769B771974 /* Pods_FGPhotoBrowser_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 630893364CC8F3502CBDBC56 /* Pods_FGPhotoBrowser_Example.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		A82521548DC69D71DAC99E15 /* libPods-FGPhotoBrowser_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC96C7485055DBB73459EDF /* libPods-FGPhotoBrowser_Tests.a */; };
+		F871C1F7C31786E67262DAE3 /* libPods-FGPhotoBrowser_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10752F5444A958C214EA62DF /* libPods-FGPhotoBrowser_Example.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +38,10 @@
 
 /* Begin PBXFileReference section */
 		06228675396EC989E2748421 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		10752F5444A958C214EA62DF /* libPods-FGPhotoBrowser_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FGPhotoBrowser_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AC96C7485055DBB73459EDF /* libPods-FGPhotoBrowser_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FGPhotoBrowser_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7F95A0637333935ECD82DD /* FGPhotoBrowser.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FGPhotoBrowser.podspec; path = ../FGPhotoBrowser.podspec; sourceTree = "<group>"; };
-		4F61CF774230B40EFB07CCA2 /* Pods_FGPhotoBrowser_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FGPhotoBrowser_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5ECC5F1D1D0134E7003BA279 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* FGPhotoBrowser_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FGPhotoBrowser_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,7 +61,6 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		630893364CC8F3502CBDBC56 /* Pods_FGPhotoBrowser_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FGPhotoBrowser_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A73FAD9941B3DB860059E045 /* Pods-FGPhotoBrowser_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FGPhotoBrowser_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-FGPhotoBrowser_Example/Pods-FGPhotoBrowser_Example.release.xcconfig"; sourceTree = "<group>"; };
 		A7E4E2937D9ED674A23804D8 /* Pods-FGPhotoBrowser_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FGPhotoBrowser_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FGPhotoBrowser_Example/Pods-FGPhotoBrowser_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -75,7 +77,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				694B0D921868A9769B771974 /* Pods_FGPhotoBrowser_Example.framework in Frameworks */,
+				F871C1F7C31786E67262DAE3 /* libPods-FGPhotoBrowser_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +88,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				50BAA65009F34B21603B8DA9 /* Pods_FGPhotoBrowser_Tests.framework in Frameworks */,
+				A82521548DC69D71DAC99E15 /* libPods-FGPhotoBrowser_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,8 +123,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				630893364CC8F3502CBDBC56 /* Pods_FGPhotoBrowser_Example.framework */,
-				4F61CF774230B40EFB07CCA2 /* Pods_FGPhotoBrowser_Tests.framework */,
+				10752F5444A958C214EA62DF /* libPods-FGPhotoBrowser_Example.a */,
+				2AC96C7485055DBB73459EDF /* libPods-FGPhotoBrowser_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -132,6 +134,7 @@
 			children = (
 				6003F59C195388D20070C39A /* FGAppDelegate.h */,
 				6003F59D195388D20070C39A /* FGAppDelegate.m */,
+				5ECC5F1D1D0134E7003BA279 /* Default@2x.png */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* FGViewController.h */,
 				6003F5A6195388D20070C39A /* FGViewController.m */,
@@ -276,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ECC5F1E1D0134E7003BA279 /* Default@2x.png in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
