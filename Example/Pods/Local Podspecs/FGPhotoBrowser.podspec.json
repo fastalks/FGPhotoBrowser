@@ -18,11 +18,11 @@
   "platforms": {
     "ios": "7.0"
   },
-  "public_header_files": "FGPhotoBrowser/Classes/**/*.h",
-  "source_files": "FGPhotoBrowser/Classes/**/*",
+  "public_header_files": "Pod/Classes/**/*.h",
+  "source_files": "Pod/Classes/**/*",
   "resource_bundles": {
     "FGPhotoBrowserImages": [
-      "FGPhotoBrowser/Assets/**/*"
+      "Pod/Assets/**/*"
     ]
   },
   "frameworks": "UIKit",

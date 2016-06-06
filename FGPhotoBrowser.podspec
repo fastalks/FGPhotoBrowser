@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name             = 'FGPhotoBrowser'
-s.version          = '0.1.0'
+s.version          = '0.1.1'
 s.summary          = 'FGPhotoBrowser is 一个图片浏览器.'
 
 s.description      = <<-DESC
@@ -13,10 +13,10 @@ s.author           = { 'wangfaguo' => '452290424@qq.com' }
 s.source           = { :git => 'https://github.com/wangfaguo/FGPhotoBrowser.git', :tag => s.version.to_s }
 
 s.ios.deployment_target = '7.0'
-s.public_header_files = 'FGPhotoBrowser/Classes/**/*.h'
-s.source_files = 'FGPhotoBrowser/Classes/**/*'
+s.public_header_files = 'Pod/Classes/**/*.h'
+s.source_files = 'Pod/Classes/**/*'
 s.resource_bundles = {
-'FGPhotoBrowserImages' => ['FGPhotoBrowser/Assets/**/*']
+'FGPhotoBrowserImages' => ['Pod/Assets/**/*']
 }
 s.frameworks = 'UIKit'
 s.dependency 'SDWebImage', '~> 3.7.0'

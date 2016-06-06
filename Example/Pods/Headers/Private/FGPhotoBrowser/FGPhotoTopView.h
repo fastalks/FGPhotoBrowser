@@ -1,1 +1,1 @@
-../../../../../FGPhotoBrowser/Classes/FGPhotoTopView.h
+../../../../../Pod/Classes/FGPhotoTopView.h
