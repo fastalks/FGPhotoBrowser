@@ -101,11 +101,12 @@ static UIWindow *photo_Window = nil;
             [self.topView.collectionButton setImage:image forState:UIControlStateNormal];
         }
     }
-    [self configProgress:0];
+    
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self animationAtIndex:self.currentIndex];
+    [self configProgress:0];
 }
 -(void)animationAtIndex:(NSInteger)index{
     CGRect startFrame = [self.imageView.superview convertRect:self.imageView.frame toView:[UIApplication sharedApplication].keyWindow];
