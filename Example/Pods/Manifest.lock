@@ -1,5 +1,5 @@
 PODS:
-  - FGPhotoBrowser (0.1.0):
+  - FGPhotoBrowser (0.1.1):
     - SDWebImage (~> 3.7.0)
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
@@ -13,7 +13,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  FGPhotoBrowser: 350e167aac08bcf501289f51995a53df66ccc026
+  FGPhotoBrowser: 418eb4e5b5b2838ef13b8271901f2364d55c82dc
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
 
 PODFILE CHECKSUM: b2ca727ff0b5595e71fabfea350c000bcf1dfa54

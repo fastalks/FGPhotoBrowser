@@ -8,10 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "FGPhotoModel.h"
+@class FGPhotoBrowser;
+@protocol FGPhotoBrowserDelegate <NSObject>
+@optional
+-(void)rightButtonItemDidTipAtIndex:(NSInteger)index;
+-(void)FGPhotoBrowser:(FGPhotoBrowser*)browser didScrollToEnd:(NSInteger)index;
+-(UIImage*)rigthItemButtonImageForFGPhotoBrowser:(FGPhotoBrowser*)browser;
+
+@end
 
 @interface FGPhotoBrowser : UIViewController
 
-+(void)showSingleImageView:(UIImageView*)imageView withImageUrls:(NSArray<FGPhotoModel*>*)images  index:(NSInteger)index;
+@property (nonatomic,weak,readonly) id<FGPhotoBrowserDelegate>delegate;
 
-+(void)showMultiImagesView:(UIImageView*)imageView withImageUrls:(NSArray<FGPhotoModel*>*)images  index:(NSInteger)index;
++(id)showSingleImagesWithDelegate:(id<FGPhotoBrowserDelegate>)delegate imageView:(UIImageView*)imageView withImageUrls:(NSArray<FGPhotoModel*>*)images  index:(NSInteger)index;
+
++(id)showMultiImagesWithDelegate:(id<FGPhotoBrowserDelegate>)delegate imageView:(UIImageView*)imageView withImageUrls:(NSArray<FGPhotoModel*>*)images  index:(NSInteger)index;
+
+-(void)loadMore:(NSArray*)photos;
 @end

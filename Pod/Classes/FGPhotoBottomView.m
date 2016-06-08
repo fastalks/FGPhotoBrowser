@@ -19,8 +19,9 @@
         self.titleLabel.textColor = [UIColor whiteColor];
         [self addSubview:self.titleLabel];
         
-        self.progressLabel = [[UILabel alloc]initWithFrame: CGRectMake(CGRectGetWidth(frame) - 80, 0, 80,CGRectGetHeight(frame))];
+        self.progressLabel = [[UILabel alloc]initWithFrame: CGRectMake(CGRectGetWidth(frame) - 90, 0, 80,CGRectGetHeight(frame))];
         self.progressLabel.textColor = [UIColor whiteColor];
+        self.progressLabel.textAlignment = NSTextAlignmentRight;
         [self addSubview:self.progressLabel];
     }
     return self;

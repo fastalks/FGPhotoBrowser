@@ -35,11 +35,14 @@ static UIWindow *photo_Window = nil;
 @property (nonatomic,assign) BOOL showMultiImages;//显示套图
 @property (nonatomic,assign) NSInteger currentIndex;
 @property (nonatomic,strong) NSIndexPath *indexPath;
+@property (nonatomic,assign) NSInteger currentPageIndex;
+
+@property (nonatomic,weak,readwrite) id<FGPhotoBrowserDelegate>delegate;
 @end
 
 @implementation FGPhotoBrowser
 
-+(void)showSingleImageView:(UIImageView*)imageView withImageUrls:(NSArray<FGPhotoModel*>*)images  index:(NSInteger)index{
++(id)showSingleImagesWithDelegate:(id<FGPhotoBrowserDelegate>)delegate imageView:(UIImageView *)imageView withImageUrls:(NSArray<FGPhotoModel *> *)images index:(NSInteger)index{
     if (photo_Window == nil)
     {
         photo_Window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
@@ -49,13 +52,15 @@ static UIWindow *photo_Window = nil;
     }
     
     FGPhotoBrowser *browser = [[FGPhotoBrowser alloc]init];
+    browser.delegate = delegate;
     browser.currentIndex = index;
     browser.imageView = imageView;
     [browser.images addObjectsFromArray:images];
     photo_Window.rootViewController = browser;
+    return browser;
 }
 
-+(void)showMultiImagesView:(UIImageView*)imageView withImageUrls:(NSArray<FGPhotoModel*>*)images  index:(NSInteger)index{
++(id)showMultiImagesWithDelegate:(id<FGPhotoBrowserDelegate>)delegate imageView:(UIImageView *)imageView withImageUrls:(NSArray<FGPhotoModel *> *)images index:(NSInteger)index{
     if (photo_Window == nil)
     {
         photo_Window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
@@ -66,11 +71,12 @@ static UIWindow *photo_Window = nil;
     
     FGPhotoBrowser *browser = [[FGPhotoBrowser alloc]init];
     browser.showMultiImages = YES;
+    browser.delegate = delegate;
     browser.currentIndex = index;
     browser.imageView = imageView;
     [browser.images addObjectsFromArray:images];
     photo_Window.rootViewController = browser;
-    
+    return browser;
 }
 
 - (instancetype)init
@@ -89,10 +95,17 @@ static UIWindow *photo_Window = nil;
     self.photoCollectView.frame =  CGRectMake(0, TopViewHeight, FG_Screen_Width, CGRectGetHeight(self.view.bounds)-TopViewHeight);
     [self.view addSubview:self.bottomView];
     self.photoCollectView.frame =  CGRectMake(0, TopViewHeight, FG_Screen_Width, CGRectGetHeight(self.view.bounds)- TopViewHeight - BottomViewHeight);
+    if ([self.delegate respondsToSelector:@selector(rigthItemButtonImageForFGPhotoBrowser:)]) {
+        UIImage *image = [self.delegate rigthItemButtonImageForFGPhotoBrowser:self];
+        if (image) {
+            [self.topView.collectionButton setImage:image forState:UIControlStateNormal];
+        }
+    }
+    [self configProgress:0];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-     [self animationAtIndex:self.currentIndex];
+    [self animationAtIndex:self.currentIndex];
 }
 -(void)animationAtIndex:(NSInteger)index{
     CGRect startFrame = [self.imageView.superview convertRect:self.imageView.frame toView:[UIApplication sharedApplication].keyWindow];
@@ -112,28 +125,6 @@ static UIWindow *photo_Window = nil;
         [tempImageView removeFromSuperview];
         
     }];
-    //下载图片
-    if (self.showMultiImages){
-        for (FGPhotoModel *model in self.images) {
-            for (FGPhotoModel *subModel in model.childrens) {
-                [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:subModel.imageUrl] options:SDWebImageDownloaderUseNSURLCache progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
-                    if (finished && !error && image) {
-                        model.image = image;
-                    }
-                }];
-            }
-            
-        }
-    }else{
-        for (FGPhotoModel *model in self.images) {
-            [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:model.imageUrl] options:SDWebImageDownloaderUseNSURLCache progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
-                if (finished && !error && image) {
-                    model.image = image;
-                }
-            }];
-        }
-    }
-    
     
 }
 
@@ -188,14 +179,66 @@ static UIWindow *photo_Window = nil;
     }];
 }
 -(void)collectionButtonAction{
-    
+    if (self.showMultiImages) {
+        if ([self.delegate respondsToSelector:@selector(rightButtonItemDidTipAtIndex:)]) {
+            [self.delegate rightButtonItemDidTipAtIndex:self.indexPath.section];
+        }
+    }else{
+        if ([self.delegate respondsToSelector:@selector(rightButtonItemDidTipAtIndex:)]) {
+            [self.delegate rightButtonItemDidTipAtIndex:self.currentPageIndex];
+        }
+    }
+}
+-(void)loadMore:(NSArray*)photos{
+    [self.images addObjectsFromArray:photos];
+    [self.photoCollectView reloadData];
 }
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    NSLog(@"%@",@"scrollViewDidEndDecelerating");
+    
+    NSInteger contentOffsetX = scrollView.contentOffset.x;
+    NSInteger index =  contentOffsetX / CGRectGetWidth(scrollView.frame);
+    self.currentPageIndex = index;
+    [self configProgress:index];
+}
+-(void)configProgress:(NSInteger)index{
+    NSLog(@"index = %d",index);
     if (self.showMultiImages) {
+        NSInteger count = 0;
+        BOOL find = NO;
+        for (int i = 0; i< [self.images count]; i++) {
+            FGPhotoModel *model = self.images[i];
+            for (int j = 0; j <[model.childrens count]; j++) {
+                if (count >= index) {
+                    self.indexPath = [NSIndexPath indexPathForRow:j inSection:i];
+                    find = YES;
+                    break;
+                }
+                count++;
+            }
+            if (find) {
+                break;
+            }
+        }
         FGPhotoModel *model = self.images[self.indexPath.section];
         self.bottomView.titleLabel.text = model.title;
         self.bottomView.progressLabel.text = [NSString stringWithFormat:@"%zd/%zd",self.indexPath.row+1,[model.childrens count]];
+    }
+}
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+   
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    NSInteger contentOffsetX = scrollView.contentOffset.x;
+    NSInteger contentSizeW = scrollView.contentSize.width;
+    NSLog(@"contentOffsetX %ld",contentOffsetX);
+    NSLog(@"contentSizeW %ld",contentSizeW);
+    if (contentOffsetX + CGRectGetWidth(scrollView.frame)>= contentSizeW) {
+        //到头了
+        NSLog(@"到头了");
+        if ([self.delegate respondsToSelector:@selector(FGPhotoBrowser:didScrollToEnd:)]) {
+           [self.delegate FGPhotoBrowser:self didScrollToEnd:self.currentIndex];
+        }
     }
 }
 #pragma mark -
@@ -217,8 +260,7 @@ static UIWindow *photo_Window = nil;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FGPhotoCollectionViewCell *cell =
     (FGPhotoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"FGPhotoCollectionViewCell"forIndexPath:indexPath];
-    self.indexPath = indexPath;
-     NSLog(@"%@",indexPath);
+     [cell resetZoomingScale];
     if (self.showMultiImages) {
         FGPhotoModel *model = self.images[indexPath.section];
         FGPhotoModel *subModel = model.childrens[indexPath.row];
@@ -227,8 +269,6 @@ static UIWindow *photo_Window = nil;
         }else{
             [cell.imageView sd_setImageWithURL:[NSURL URLWithString:subModel.imageUrl]];
         }
-        self.bottomView.titleLabel.text = model.title;
-        self.bottomView.progressLabel.text = [NSString stringWithFormat:@"%zd/%zd",indexPath.row+1,[model.childrens count]];
     }else{
         FGPhotoModel *model = self.images[indexPath.row];
         if (model.image) {
@@ -237,14 +277,12 @@ static UIWindow *photo_Window = nil;
             [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl]];
         }
     }
-    
     return cell;
     
 }
 
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     return self.photoCollectView.bounds.size;
 }
 #pragma mark - getters and setters
@@ -256,7 +294,6 @@ static UIWindow *photo_Window = nil;
         layout.minimumLineSpacing = 0;
         _photoCollectView = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:layout];
         _photoCollectView.pagingEnabled = YES;
-        _photoCollectView.decelerationRate = 0;
         _photoCollectView.hidden = YES;
         _photoCollectView.showsHorizontalScrollIndicator = NO;
         _photoCollectView.dataSource = self;
@@ -269,7 +306,7 @@ static UIWindow *photo_Window = nil;
     if (!_topView) {
         _topView = [[FGPhotoTopView alloc]initWithFrame:CGRectMake(0, 0, FG_Screen_Width, TopViewHeight)];
         [_topView.backButton addTarget:self action:@selector(backButtonAction) forControlEvents:UIControlEventTouchUpInside];
-        [_topView.collectionButton addTarget:self action:@selector(collectionButtonAction) forControlEvents:UIControlEventTouchUpInside];
+         [_topView.collectionButton addTarget:self action:@selector(collectionButtonAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _topView;
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E05D4F01D06CFFA00DB4A74 /* message_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E05D4EE1D06CFFA00DB4A74 /* message_icon@2x.png */; };
+		5E05D4F11D06CFFA00DB4A74 /* message_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E05D4EF1D06CFFA00DB4A74 /* message_icon@3x.png */; };
 		5ECC5F1E1D0134E7003BA279 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ECC5F1D1D0134E7003BA279 /* Default@2x.png */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -41,6 +43,8 @@
 		10752F5444A958C214EA62DF /* libPods-FGPhotoBrowser_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FGPhotoBrowser_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AC96C7485055DBB73459EDF /* libPods-FGPhotoBrowser_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FGPhotoBrowser_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7F95A0637333935ECD82DD /* FGPhotoBrowser.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FGPhotoBrowser.podspec; path = ../FGPhotoBrowser.podspec; sourceTree = "<group>"; };
+		5E05D4EE1D06CFFA00DB4A74 /* message_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_icon@2x.png"; sourceTree = "<group>"; };
+		5E05D4EF1D06CFFA00DB4A74 /* message_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_icon@3x.png"; sourceTree = "<group>"; };
 		5ECC5F1D1D0134E7003BA279 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* FGPhotoBrowser_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FGPhotoBrowser_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -135,6 +139,8 @@
 				6003F59C195388D20070C39A /* FGAppDelegate.h */,
 				6003F59D195388D20070C39A /* FGAppDelegate.m */,
 				5ECC5F1D1D0134E7003BA279 /* Default@2x.png */,
+				5E05D4EE1D06CFFA00DB4A74 /* message_icon@2x.png */,
+				5E05D4EF1D06CFFA00DB4A74 /* message_icon@3x.png */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* FGViewController.h */,
 				6003F5A6195388D20070C39A /* FGViewController.m */,
@@ -281,7 +287,9 @@
 			files = (
 				5ECC5F1E1D0134E7003BA279 /* Default@2x.png in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				5E05D4F11D06CFFA00DB4A74 /* message_icon@3x.png in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				5E05D4F01D06CFFA00DB4A74 /* message_icon@2x.png in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,6 +528,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FGPhotoBrowser/FGPhotoBrowser-Prefix.pch";
 				INFOPLIST_FILE = "FGPhotoBrowser/FGPhotoBrowser-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -536,6 +545,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FGPhotoBrowser/FGPhotoBrowser-Prefix.pch";
 				INFOPLIST_FILE = "FGPhotoBrowser/FGPhotoBrowser-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

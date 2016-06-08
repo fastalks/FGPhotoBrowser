@@ -10,7 +10,8 @@
 #import <FGPhotoBrowser/FGPhotoBrowser.h>
 #import <UIImageView+WebCache.h>
 
-@interface FGViewController (){
+@interface FGViewController ()<FGPhotoBrowserDelegate>
+{
     UIImageView *imageView;
 }
 
@@ -22,7 +23,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.view.backgroundColor = [UIColor greenColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     imageView = [[UIImageView alloc]init];
     [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://www.mobp2p.com/data/upfiles/images/2016-06/03/863599_users_avatar_1464938907691.JPEG"]];
     imageView.frame = CGRectMake(100, 200, 80, 80);
@@ -48,7 +49,7 @@
     NSLog(@"%@",NSStringFromCGSize(imageView.image.size));
     
     NSMutableArray *images= [[NSMutableArray alloc]init];
-    for (int i = 1; i < 10; i++) {
+    for (int i = 1; i < 5; i++) {
         FGPhotoModel *model1 = [[FGPhotoModel alloc] init];
         model1.title = [NSString stringWithFormat:@"这是套图title %d",i];
         model1.imageUrl = @"http://www.mobp2p.com/data/upfiles/images/2016-06/03/863599_users_avatar_1464938907691.JPEG";
@@ -63,8 +64,29 @@
 
 //    [FGPhotoBrowser showSingleImageView:imageView withImageUrls:images index:0];
 
-     [FGPhotoBrowser showMultiImagesView:imageView withImageUrls:images index:0];
+   FGPhotoBrowser *browser = [FGPhotoBrowser showMultiImagesWithDelegate:self imageView:imageView withImageUrls:images index:0];
+    
 }
+-(void)rightButtonItemDidTipAtIndex:(NSInteger)index{
+    
+}
+-(void)FGPhotoBrowser:(FGPhotoBrowser*)browser didScrollToEnd:(NSInteger)index{
+    NSMutableArray *images= [[NSMutableArray alloc]init];
+    for (int i = 5; i < 7; i++) {
+        FGPhotoModel *model1 = [[FGPhotoModel alloc] init];
+        model1.title = [NSString stringWithFormat:@"这是套图title %d",i];
+        model1.imageUrl = @"http://www.mobp2p.com/data/upfiles/images/2016-06/03/863599_users_avatar_1464938907691.JPEG";
+        [images addObject:model1];
+        for (int j = 1 ;j < 5 ;j++) {
+            FGPhotoModel *model2 = [[FGPhotoModel alloc] init];
+            model2.title = model1.title;
+            model2.imageUrl = @"http://www.mobp2p.com/data/upfiles/images/2016-06/03/863599_users_avatar_1464938907691.JPEG";
+            [model1.childrens addObject:model2];
+        }
+    }
+    [browser loadMore:images];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

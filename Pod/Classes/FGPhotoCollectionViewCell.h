@@ -10,4 +10,5 @@
 
 @interface FGPhotoCollectionViewCell : UICollectionViewCell
 @property (nonatomic,strong) UIImageView *imageView;
+-(void)resetZoomingScale;
 @end

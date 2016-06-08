@@ -1,6 +1,6 @@
 {
   "name": "FGPhotoBrowser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "summary": "FGPhotoBrowser is 一个图片浏览器.",
   "description": "FGPhotoBrowser is 一个图片浏览器，支持本地图片和网络图片的显示.",
   "homepage": "https://github.com/wangfaguo/FGPhotoBrowser",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/wangfaguo/FGPhotoBrowser.git",
-    "tag": "0.1.0"
+    "tag": "0.1.1"
   },
   "platforms": {
     "ios": "7.0"
